@@ -29,6 +29,6 @@ example {x : ℤ} (h1 : x + 4 = 2) : x = -2 :=
 -- 4.3
 example {a b : ℝ} (h1 : a - 5 * b = 4) (h2 : b + 2 = 3) : a = 9 :=
   calc
-    a = 4 + 5 * b : by rw [h1]
-    _ = 4 + 5 * (3 - 2) : by rw [h2]
-    _ = 9 : by ring
+    a = 4 + 5 * b := by rw [h1]
+    _ = 4 + 5 * (3 - 2) := by rw [h2]
+    _ = 9 := by ring
