@@ -5,7 +5,7 @@ import Library.Tactic.Addarith
 import Library.Tactic.Cancel
 
 axiom notnotE {p : Prop} (h : ¬ ¬ p) : p
---slide 21
+-- 3.1
 theorem p3_a {p q r : Prop} (h1: p ∧ q → r) : p → (q → r) := by
   intro hp
   intro hq
