@@ -6,11 +6,29 @@ import Library.Tactic.Cancel
 
 axiom notnotE {p : Prop} (h : ¬ ¬ p) : p
 -- 3.1
-theorem p3_a {p q r : Prop} (h1: p ∧ q → r) : p → (q → r) := by
+theorem slide_21 {p q r : Prop} (h1: p ∧ q → r) : p → (q → r) := by
   intro hp
   intro hq
   have hpq: p ∧ q := by apply And.intro hp hq
   apply h1 hpq
+
+-- 3.2
+theorem slide_23 {p q r : Prop} (h1: p → (q → r)) : (p → q) → (p → r) :=
+
+  intro h2,  --(P → Q)
+  intro hp, 
+  have hq : q := by apply h2 hp,
+  have hqr : q → r := by apply h1 hp,
+  have hr : r := by apply hqr hq
+
+-- 3.3
+theorem slide_24 {p q r : Prop} (h1: (p∧¬q)→ r) (h2: ¬r) (h3: p) : q := by
+  have hnnq: ¬¬q := by
+    intro hnq
+    have hpnq : p ∧ ¬q := by apply And.intro h3 hnq
+    have hr : r := by apply h1 hpnq
+    contradiction
+  apply notnotE hnnq
 
 -- 4.1
 example {a b : ℤ } (h1 : a = 2 * b + 5) (h2 : b = 3) : a = 11 :=
