@@ -21,15 +21,6 @@ theorem slide_23 {p q r : Prop} (h1: p → (q → r)) : (p → q) → (p → r) 
   have hqr : q → r := by apply h1 hp,
   have hr : r := by apply hqr hq
 
--- 3.3
-theorem slide_24 {p q r : Prop} (h1: (p∧¬q)→ r) (h2: ¬r) (h3: p) : q := by
-  have hnnq: ¬¬q := by
-    intro hnq
-    have hpnq : p ∧ ¬q := by apply And.intro h3 hnq
-    have hr : r := by apply h1 hpnq
-    contradiction
-  apply notnotE hnnq
-
 -- 4.1
 example {a b : ℤ } (h1 : a = 2 * b + 5) (h2 : b = 3) : a = 11 :=
   calc
